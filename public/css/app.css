@@ -1,0 +1,27 @@
+.error-messages {
+    font-size: 14px;
+    color: red;
+    text-decoration: none;
+    margin-left: 40%;
+}
+
+.error-messages ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.employees-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.employee {
+    background: mintcream;
+    color: #4a5568;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 15px;
+}

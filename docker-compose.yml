@@ -1,0 +1,39 @@
+version: "3"
+networks:
+  employees-client-network:
+    driver: bridge
+services:
+  app:
+    image: employees-client-www
+    environment:
+      - APP_ENV=${APP_ENV}
+    container_name: employees-client-www
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    depends_on:
+      - mysql_db
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8081:80
+    networks:
+      - employees-client-network
+  mysql_db:
+    image: mysql:5.7
+    container_name: employees-client-mysql
+    volumes:
+      - mysql_db:/var/lib/mysql
+    ports:
+      - 13307:3306
+    environment:
+      MYSQL_DATABASE: employees-client
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: bojan
+      MYSQL_PASSWORD: password123?
+    networks:
+      - employees-client-network
+volumes:
+  mysql_db:
+    driver: "local"
+
